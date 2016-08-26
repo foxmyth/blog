@@ -22,6 +22,10 @@ Route::get('cats', function() {
 	return view('cats.index')->with('cats', $cats);
 });
 
+Route::get('cats/create', function() {
+	return view('cats.create');
+});
+
 Route::post('cats', function() {
 	$cat = Blog\Cat::create(Input::all());
 
@@ -30,7 +34,7 @@ Route::post('cats', function() {
 
 Route::get('cats/{cat}', function(Blog\Cat $cat) {
 	return view('cats.show')->with('cat', $cat);
-});
+})->where('id', '[0-9]+');
 
 Route::get('cats/{cat}/edit', function(Blog\Cat $cat) {
 	return view('cats.edit')->with('cat', $cat);
@@ -42,23 +46,20 @@ Route::put('cats/{cat}', function(Blog\Cat $cat) {
 	return redirect('cats/'.$cat->id)->withSuccess('Cat has been updated.');
 });
 
-Route::get('cats/create', function() {
-	return view('cats.create');
-});
-
 Route::delete('cats/{cat}', function(Blog\Cat $cat) {
 	$cat->delete();
 	return redirect('cats')->withSuccess('Cat has been deleted.');
 });
 
 Route::get('cats/breeds/{name}', function($name) { 
-	$breeds = Blog\Breed::with('cats')
-				->whereName($name)
-				->first();
+	return 'Breed';
+	// $breed = Blog\Breed::with('cats')
+	// 			->whereName($name)
+	// 			->first();
 
-	return view('cats.index')
-				->with('breed', $breed)
-				->width('cats', $breed->cats);				
+	// return view('cats.index')
+	// 			->with('breed', $breed)
+	// 			->with('cats', $cats);				
 });
 
 // Category: about
