@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8" />	
 	<title>Blog for phpgirls (test)</title>
-	<link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css')}}">
+	<link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{ URL::asset('css/customize.css')}}">
 </head>
 <body>
 	<div class="container">

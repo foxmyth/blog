@@ -12,7 +12,13 @@
 */
 
 Route::get('/', function () {
-    return DB::table('news_events')->find(1);
+	return 'It works,!';
+});
+
+Route::group(['namespace' => 'Admin'], function() {
+	Route::get('admin/newsevents/', ['as' => 'admin.newsevents.index', 'uses' => 'NewsEventController@index']);
+
+	Route::get('admin/newsevents/{id}', ['as' => 'admin.newsevents.edit', 'uses' => 'NewsEventController@edit']);
 });
 
 // // Category: Cats

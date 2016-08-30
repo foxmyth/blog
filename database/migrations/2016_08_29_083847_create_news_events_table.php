@@ -15,10 +15,10 @@ class CreateNewsEventsTable extends Migration
     {
         Schema::create('news_events', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 500)->nullable();
-            $table->timestamp('start_time')->nullable();
-            $table->timestamp('end_time')->nullable();
-            $table->text('contents')->nullable();
+            $table->string('title', 500);
+            $table->timestamp('start_time');
+            $table->timestamp('end_time');
+            $table->text('contents');
             $table->timestamps();
 
             $table->index('start_time', 'end_time');
