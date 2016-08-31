@@ -1,9 +1,14 @@
 @extends('layouts.master')
 
 @section('header')
-	<h2>News And Events - update</h2>
+	<h2>
+		News And Events
+		<small>{{ $event->title }}</small>
+	</h2>
 @endsection
 
 @section('content')
-	<h3><strong>{!! nl2br(e($event->title)) !!}</strong></h3>
+	{!! Form::model($event, ['route' => ['admin.newsevents.update', $event->id]])!!}
+		@include('partials.forms.newsEvent')
+	{!! Form::close() !!}
 @endsection

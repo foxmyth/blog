@@ -13,6 +13,10 @@ class NewsEventController extends Controller {
         $this->model = new NewsEvent();
     }
 
+    public function __destruct() {
+        parent::__destruct();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -79,7 +83,9 @@ class NewsEventController extends Controller {
      */
     public function update(Request $request, $id)
     {
-        //
+        var_dump($request['title']);
+
+        return redirect("newsevents/{$id}")->withSuccess('News and Events has been updated.');
     }
 
     /**

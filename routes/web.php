@@ -15,10 +15,19 @@ Route::get('/', function () {
 	return 'It works,!';
 });
 
-Route::group(['namespace' => 'Admin'], function() {
-	Route::get('admin/newsevents/', ['as' => 'admin.newsevents.index', 'uses' => 'NewsEventController@index']);
-
-	Route::get('admin/newsevents/{id}', ['as' => 'admin.newsevents.edit', 'uses' => 'NewsEventController@edit']);
+/**
+ * Admin 
+ */
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
+	/**
+	 * News And Event Pages
+	 */
+	// Index
+	Route::get('newsevents/'	, ['as' => 'admin.newsevents.index', 'uses' => 'NewsEventController@index']);
+	// edit
+	Route::get('newsevents/{id}', ['as' => 'admin.newsevents.edit', 'uses' => 'NewsEventController@edit']);
+	// update
+	Route::post('newsevents/{id}', ['as' => 'admin.newsevents.update', 'uses' => 'NewsEventController@update']);
 });
 
 // // Category: Cats
