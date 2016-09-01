@@ -10,7 +10,7 @@ class NewsEventController extends Controller {
     protected $model;
 
     public function __construct() {
-        $this->model = new NewsEvent();
+        $this->model = new NewsEvent;
     }
 
     public function __destruct() {
@@ -69,7 +69,7 @@ class NewsEventController extends Controller {
      */
     public function edit($id)
     {
-        $event = $this->model->find($id);
+        $event = $this->model->findOrFail($id);
         
         return view('newsevents.edit')->with('event', $event);
     }
@@ -83,9 +83,14 @@ class NewsEventController extends Controller {
      */
     public function update(Request $request, $id)
     {
-        var_dump($request['title']);
+        // $event = $this->model->findOrFail($id);
+        // $event->fill($request->except('_token'));
+        // $event->save();
+        
+        $this->model->where('id', $id)->update($request->except(['_token', '_method']));
 
-        return redirect("newsevents/{$id}")->withSuccess('News and Events has been updated.');
+        return redirect("admin/newsevents/{$id}/edit")
+            ->withSuccess('News and Events has been updated.');
     }
 
     /**

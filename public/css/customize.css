@@ -1,5 +1,19 @@
-.vcenter {
+.text-vc {
 	display: inline-block;
 	vertical-align: middle;
 	float: none;
+}
+
+.text-vc-pl-4 {
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
+	padding-left: 4px;
+}
+
+.text-vb-pm-4 {
+	display: inline-block;
+	vertical-align: bottom;
+	float: none;
+	margin-left: 4px;
 }

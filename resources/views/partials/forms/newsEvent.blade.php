@@ -23,8 +23,11 @@
 	</div>
 
 	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			{!! Form::submit('update', ['class' => 'btn btn-default']) !!}
+		<div class="col-sm-offset-2 col-sm-4">
+			{!! Form::submit('update the news and Events', ['class' => 'btn btn-primary']) !!}
+		</div>
+		<div class="col-sm-6 text-right">
+			{!! link_to('admin/newsevents', 'Back to the list >>', ['class' => 'text-muted']) !!}
 		</div>
 	</div>
 </div>

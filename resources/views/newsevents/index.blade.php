@@ -21,11 +21,10 @@
 							<span class="label label-info">Comming Soon</span>
 						@endif
 						<h3><strong>{!! nl2br(e($event->title)) !!}</strong></h3>
-						<p> {{ $event->contents }}</p>					
+						<p> {!! htmlspecialchars_decode($event->contents) !!}</p>
 						<p>
 							<small>
-								<strong>open</strong> : {{ $event->start_time->format('d F, Y') }} 
-								<strong> ~ </strong>
+								<strong>open</strong> : {{ $event->start_time->format('d F, Y') }}<br />
 								<strong>close</strong> : 
 									@if ($event->end_time->format('Y') == '9999')
 										Not defined
@@ -35,7 +34,7 @@
 							</small>
 						</p>
 						<p class="text-right">
-							<a href="{{ url('admin/newsevents/'.$event->id) }}" class="btn btn-primary btn-xs" role="button">update</a>
+							<a href="{{ url('admin/newsevents/'.$event->id.'/edit') }}" class="btn btn-primary btn-xs" role="button">update</a>
 						</p>
 					</div>
 				</div>
